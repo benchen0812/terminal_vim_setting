@@ -1,0 +1,136 @@
+" General vimrc format setting ----------------------------------------{{{
+
+ " Set shift width to 4 spaces.
+  set shiftwidth=4
+ " Set tab width to 4 columns.
+  set tabstop=4
+ " Use space characters instead of tabs.
+  set expandtab
+ " Do not save backup files.
+  set nobackup
+ " Do not let cursor scroll below or above N number of lines when scrolling.
+ "set scrolloff=10
+ " Do not wrap lines. Allow long lines to extend as far as the line goes.
+ "set nowrap
+ " While searching though a file incrementally highlight matching characters as you type.
+ "set incsearch
+ " Ignore capital letters during search.
+  set ignorecase
+ " Override the ignorecase option if searching for capital letters.
+ " This will allow you to search specifically for capital letters.
+  set smartcase
+ " Show partial command you type in the last line of the screen.
+  set showcmd
+ " Show the mode you are on the last line.
+  set showmode
+ " Show matching words during a search.
+  set showmatch
+ " Use highlighting when doing a search.
+  set hlsearch
+ " Set the commands to save in history default number is 20.
+  set history=1000
+" }}}
+
+" Plugin setting -------------------------------------------------------{{{
+
+call plug#begin('~/.vim/plugged')
+ "--------------
+ " Styel
+ "--------------
+  "A vim plugin to display the indention levels with thin vertical lines
+   Plug 'Yggdroot/indentLine'
+  "True Sublime Text style multiple selections for Vim
+   Plug 'terryma/vim-multiple-cursors'
+
+   Plug 'tpope/vim-surround'
+  "Vim plugin, insert or delete brackets, parens, quotes in pair
+   Plug 'jiangmiao/auto-pairs'
+  "About Vim plugin for intensely nerdy commenting powers
+   Plug 'scrooloose/nerdcommenter'
+  "Nerd tree
+   Plug 'scrooloose/nerdtree'
+  "Vim plugin that displays tags in a window, ordered by scope
+   Plug 'majutsushi/tagbar'  
+
+ "--------------
+ " Styel
+ "--------------
+   Plug 'KabbAmine/yowish.vim'
+   Plug 'itchyny/lightline.vim'
+  "Powerline
+   Plug 'powerline/powerline'
+
+ "-------------
+ "You complete me
+ "------------
+   Plug 'ycm-core/YouCompleteMe'
+
+ " fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  
+
+ " toggle the display of the locationlist with single key map
+ Plug 'Valloric/ListToggle'
+call plug#end()
+
+" }}}
+
+
+
+
+" General vimrc setting ----------------------------------------{{{
+
+"" Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+" Load an indent file for the detected file type.
+filetype indent on
+" Turn syntax highlighting on.
+syntax on
+" Add numbers to each line on the left-hand side.
+set number
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+" Highlight cursor line underneath the cursor vertically.
+"set cursorcolumn
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+set clipboard=unnamed
+set noswapfile
+set hidden
+set nobomb
+set noswapfile
+
+"--------------
+" lightline settings 
+"--------------
+set laststatus=2
+
+
+" }}}
+
+" VIM Script ---------------------------------------------------------- {{{
+
+" This will enable code folding.
+" Use the marker method of folding.
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+
+" }}}
+
+" VIM key bind ---------------------------------------------------------{{{
+  " Map the leader key to a comma.
+  let mapleader = ','
+
+" }}}
